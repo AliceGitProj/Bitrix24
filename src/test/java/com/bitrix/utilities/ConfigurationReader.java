@@ -9,20 +9,34 @@ public class ConfigurationReader {
 
     static {
         try {
-            String path = System.getProperty("user.dir") + "/configuration.properties";
-            FileInputStream input = new FileInputStream(path);
-            configFile = new Properties();
-            configFile.load(input);
-            input.close();
-        } catch (Exception e) {
 
+            //location of properties file
+            String path = System.getProperty("user.dir") + "/configuration.properties";
+
+            // get that file as a stream
+            FileInputStream input = new FileInputStream(path);
+
+            // create object of Properties class
+            configFile = new Properties();
+
+            // load properties file into properties object
+            configFile.load(input);
+
+            // close the input stream at the end
+            input.close();
+
+        } catch (Exception e) {
             e.printStackTrace();
-            throw new RuntimeException("The config file did not load");
+            throw new RuntimeException("Failed to load properties file!");
         }
     }
 
-    public static String getProperty(String keyName) {
-        return configFile.getProperty(keyName);
-    }
+    /**
+     * This method returns property value from configuration.properties file
+     *
+     * @param keyName property name
+     * @return property value
+     */
+    public static String getProperty(String keyName) { return configFile.getProperty(keyName);}
 
 }
