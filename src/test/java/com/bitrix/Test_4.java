@@ -1,4 +1,4 @@
 package com.bitrix;
 
-public class Test6 {
+public class Test_4 {
 }
