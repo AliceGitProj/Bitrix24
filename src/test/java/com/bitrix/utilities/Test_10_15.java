@@ -1,4 +1,4 @@
 package com.bitrix.utilities;
 
-public class TTTT {
+public class Test_10_15 {
 }
