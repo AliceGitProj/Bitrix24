@@ -1,4 +1,4 @@
-package com.bitrix.pages.pageBase;
+package com.bitrix.pages;
 
 import com.bitrix.utilities.Driver;
 import org.openqa.selenium.support.PageFactory;
