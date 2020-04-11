@@ -9,21 +9,14 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 
 public class Driver {
 
-    //same for everyone
     private static ThreadLocal<WebDriver> driverPool = new ThreadLocal<>();
 
-    //so no one can create object of Driver class
-    //everyone should call static getter method instead
+
     private Driver() {
 
     }
 
-    /**synchronized makes method thread safe. It ensures that only 1 thread can use it at the time.
-     *
-     * Thread safety reduces performance but it makes everything safe.
-     *
-     * @return browser
-     */
+
     public synchronized static WebDriver getDriver() {
         //if webdriver object doesn't exist
         //create it
@@ -32,7 +25,7 @@ public class Driver {
             String browser = ConfigurationReader.getProperty("browser").toLowerCase();
             switch (browser) {
                 case "chrome":
-                    WebDriverManager.chromedriver().version("79").setup();
+                    WebDriverManager.chromedriver().setup();
                     ChromeOptions chromeOptions = new ChromeOptions();
                     chromeOptions.addArguments("--start-maximized");
                     driverPool.set(new ChromeDriver(chromeOptions));
@@ -44,16 +37,15 @@ public class Driver {
                     options.setHeadless(true);
                     driverPool.set(new ChromeDriver(options));
                     break;
-                case "ie":
-                    WebDriverManager.iedriver().setup();
-                    driverPool.set(new InternetExplorerDriver());
-                    break;
                 case "firefox":
                     WebDriverManager.firefoxdriver().setup();
                     driverPool.set(new FirefoxDriver());
                     break;
-
-                    default:
+                case "ie":
+                    WebDriverManager.iedriver().setup();
+                    driverPool.set(new InternetExplorerDriver());
+                    break;
+                default:
                     throw new RuntimeException("Wrong browser name!");
             }
         }
@@ -66,4 +58,5 @@ public class Driver {
             driverPool.remove();
         }
     }
+
 }
