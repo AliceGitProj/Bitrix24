@@ -11,6 +11,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
 
@@ -44,7 +45,6 @@ public class AbstractTestBase {
             reportPath = System.getProperty("user.dir") + "\\test-output\\" + reportName;
         }
 
-
         htmlReporter = new ExtentHtmlReporter(reportPath);
         reports.attachReporter(htmlReporter);
         htmlReporter.config().setReportName("Bitrix Test Automation Results");
@@ -66,6 +66,13 @@ public class AbstractTestBase {
         actions = new Actions(Driver.getDriver());
         js = (JavascriptExecutor) driver;
         loginPage = new LoginPage();
+        test = reports.createTest("Verify Website logo");
+        Assert.assertEquals(loginPage.getSiteLogoText(), "Authorization", "Website Logo did not match");
+
+        test.info("Login as help desk");
+        Assert.assertEquals(loginPage.getSiteLogoText(), "Authorization");
+
+        test.pass("Website logo Authorization was verified");
 
     }
 
