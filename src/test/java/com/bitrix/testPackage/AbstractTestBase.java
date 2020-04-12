@@ -17,7 +17,6 @@ import java.io.IOException;
 
 public class AbstractTestBase {
 
-    // will be visible in the subclass, regarless of subclass location (same package or no)
     protected WebDriverWait wait;
     protected Actions actions;
     protected WebDriver driver;
@@ -27,13 +26,6 @@ public class AbstractTestBase {
     protected ExtentHtmlReporter htmlReporter;
     protected ExtentTest test;
 
-    /**
-     * ExtentReports extent = new ExtentReports();
-     * extent.attachReporter(reporterType);
-     */
-
-    //@Optional - to make parameter optional
-    //if you don't specify it, testng will require to specify this parameter for every test, in xml runner
     @BeforeTest
     @Parameters("reportName")
     public void setupTest(@Optional String reportName) {
@@ -42,24 +34,23 @@ public class AbstractTestBase {
 
         reports = new ExtentReports();
 
-        String reportPath = "";
-        // location of report file
+        String reportPath;
+
         if (System.getProperty("os.name").toLowerCase().contains("mac")) {
             reportPath = System.getProperty("user.dir") + "/test-output/" + reportName;
         } else {
             reportPath = System.getProperty("user.dir") + "\\test-output\\" + reportName;
         }
 
-        //is a HTML report itself
+
         htmlReporter = new ExtentHtmlReporter(reportPath);
-        // add it to the reporter
         reports.attachReporter(htmlReporter);
-        htmlReporter.config().setReportName("VyTrack Test Automation Results");
+        htmlReporter.config().setReportName("Bitrix Test Automation Results");
     }
 
     @AfterTest
     public void afterTest() {
-        reports.flush(); //to release a report
+        reports.flush();
     }
 
     @BeforeMethod
@@ -77,19 +68,14 @@ public class AbstractTestBase {
 
     @AfterMethod
     public void teardown(ITestResult iTestResult) throws IOException {
-        //ItestResult class describes the result of a test.
-        // if test failed, take a screenshot
-        // no failure - no  screenshot
-        if (iTestResult.getStatus() == ITestResult.FAILURE) {
-            // screenshot will have a name of the test
-            String screenshotPath = BrowserUtilities.getScreenshot(iTestResult.getName());
-            test.fail(iTestResult.getName()); // attach test name that failed
-            BrowserUtilities.wait(2);
-            test.addScreenCaptureFromPath(screenshotPath, "Failed"); // attach screenshot
-            test.fail(iTestResult.getThrowable()); // attach console output
-        }
 
-        BrowserUtilities.wait(2);
+        if (iTestResult.getStatus() == ITestResult.FAILURE) {
+            String screenshotPath = BrowserUtilities.getScreenshot(iTestResult.getName());
+            test.fail(iTestResult.getName());
+
+            test.addScreenCaptureFromPath(screenshotPath, "Failed");
+            test.fail(iTestResult.getThrowable());
+        }
 
         Driver.closeDriver();
     }
