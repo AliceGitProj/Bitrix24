@@ -1,5 +1,8 @@
 package com.bitrix.pages;
 
+import com.bitrix.utilities.BrowserUtilities;
+import com.bitrix.utilities.ConfigurationReader;
+
 import com.bitrix.utilities.Driver;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -42,6 +45,15 @@ public class LoginPage {
 
     public LoginPage() {
         PageFactory.initElements(driver, this);
+    }
+
+    public void login() {
+        String usernameValue = ConfigurationReader.getProperty("username");
+        String passwordValue = ConfigurationReader.getProperty("password");
+        userName.sendKeys(usernameValue);
+        password.sendKeys(passwordValue, Keys.ENTER);
+        BrowserUtilities.waitForPageToLoad(10);
+        BrowserUtilities.wait(3);
     }
 
     public void login(String usernameValue, String passwordValue) {
