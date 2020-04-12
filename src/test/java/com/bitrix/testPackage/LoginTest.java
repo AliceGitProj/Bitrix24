@@ -7,17 +7,7 @@ import org.testng.annotations.Test;
 
 public class LoginTest extends AbstractTestBase {
 
-    @Test()
-    public void verifySiteLogo() {
 
-        test = reports.createTest("Verify Website logo");
-        Assert.assertEquals(loginPage.getSiteLogoText(), "Authorization", "Website Logo did not match");
-
-        test.info("Login as help desk");
-        Assert.assertEquals(loginPage.getSiteLogoText(), "Authorization");
-
-        test.pass("Website logo Authorization was verified");
-    }
 
     @Test(dataProvider = "credentialsFromExcel", priority = 1)
     public void loginTestWithExcel(String usernameValue, String passwordValue) {
@@ -42,4 +32,6 @@ public class LoginTest extends AbstractTestBase {
         ExcelUtil excelUtil = new ExcelUtil(path, spreadSheet);
         return excelUtil.getDataArray();
     }
+
+
 }
