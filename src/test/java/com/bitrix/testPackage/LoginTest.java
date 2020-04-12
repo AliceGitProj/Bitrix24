@@ -1,6 +1,5 @@
 package com.bitrix.testPackage;
 
-import com.bitrix.pages.LoginPage;
 import com.bitrix.utilities.ExcelUtil;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
@@ -8,11 +7,8 @@ import org.testng.annotations.Test;
 
 public class LoginTest extends AbstractTestBase {
 
-
     @Test()
     public void verifySiteLogo() {
-
-        LoginPage loginPage = new LoginPage();
 
         test = reports.createTest("Verify Website logo");
         Assert.assertEquals(loginPage.getSiteLogoText(), "Authorization", "Website Logo did not match");
@@ -28,7 +24,6 @@ public class LoginTest extends AbstractTestBase {
 
         test = reports.createTest("Verify page logo as" + usernameValue);
 
-        LoginPage loginPage = new LoginPage();
         loginPage.login(usernameValue, passwordValue);
 
         test.info("Login as " + usernameValue);
@@ -47,6 +42,4 @@ public class LoginTest extends AbstractTestBase {
         ExcelUtil excelUtil = new ExcelUtil(path, spreadSheet);
         return excelUtil.getDataArray();
     }
-
-
 }
