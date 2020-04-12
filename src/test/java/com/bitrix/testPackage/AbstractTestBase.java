@@ -3,6 +3,7 @@ package com.bitrix.testPackage;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
+import com.bitrix.pages.LoginPage;
 import com.bitrix.utilities.BrowserUtilities;
 import com.bitrix.utilities.ConfigurationReader;
 import com.bitrix.utilities.Driver;
@@ -25,6 +26,7 @@ public class AbstractTestBase {
     protected ExtentReports reports;
     protected ExtentHtmlReporter htmlReporter;
     protected ExtentTest test;
+    protected LoginPage loginPage;
 
     @BeforeTest
     @Parameters("reportName")
@@ -63,6 +65,7 @@ public class AbstractTestBase {
         wait = new WebDriverWait(Driver.getDriver(), 25);
         actions = new Actions(Driver.getDriver());
         js = (JavascriptExecutor) driver;
+        loginPage = new LoginPage();
 
     }
 
