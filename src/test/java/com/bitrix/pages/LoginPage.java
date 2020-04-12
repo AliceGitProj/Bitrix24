@@ -1,6 +1,6 @@
 package com.bitrix.pages;
 
-import com.bitrix.testPackage.AbstractTestBase;
+
 import com.bitrix.utilities.BrowserUtilities;
 import com.bitrix.utilities.Driver;
 import org.openqa.selenium.Keys;
@@ -10,7 +10,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class LoginPage extends AbstractTestBase {
+public class LoginPage {
 
     protected WebDriver driver = Driver.getDriver();
     protected WebDriverWait wait = new WebDriverWait(driver, 20);
