@@ -2,6 +2,7 @@ package com.bitrix.testPackage;
 
 import com.bitrix.utilities.ExcelUtil;
 import org.apache.poi.ss.usermodel.*;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.io.File;
@@ -89,4 +90,16 @@ public class ReadDataFromExcel {
         ExcelUtil excelUtil = new ExcelUtil(path, spreadSheet);
         System.out.println(Arrays.deepToString(excelUtil.getDataArray()));
     }
+
+    @DataProvider
+    public Object[][] credentials() {
+
+        String path = "BitrixCredentials.xlsx";
+        String spreadSheet = "Credentials";
+
+        ExcelUtil excelUtil = new ExcelUtil(path, spreadSheet);
+        return excelUtil.getDataArray();
+    }
+
+
 }
