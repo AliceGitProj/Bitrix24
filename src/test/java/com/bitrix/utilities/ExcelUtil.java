@@ -17,12 +17,9 @@ public class ExcelUtil {
         this.path = path;
         try {
             FileInputStream ExcelFile = new FileInputStream(path);
-
             workBook = WorkbookFactory.create(ExcelFile);
             workSheet = workBook.getSheet(sheetName);
-
             Assert.assertNotNull(workSheet, "Sheet: \"" + sheetName + "\" does not exist\n");
-
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

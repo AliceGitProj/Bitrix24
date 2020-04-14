@@ -11,7 +11,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class LoginPage {
+public class LoginPage extends PageBase {
 
     protected WebDriver driver = Driver.getDriver();
     protected WebDriverWait wait = new WebDriverWait(driver, 20);
@@ -43,9 +43,9 @@ public class LoginPage {
         return taskTab.getText();
     }
 
-    public LoginPage() {
-        PageFactory.initElements(driver, this);
-    }
+//    public LoginPage() {
+//        PageFactory.initElements(driver, this);
+//    }
 
     public void login() {
         String usernameValue = ConfigurationReader.getProperty("username");
