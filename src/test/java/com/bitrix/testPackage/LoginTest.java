@@ -1,15 +1,12 @@
 package com.bitrix.testPackage;
 
-import com.bitrix.utilities.ExcelUtil;
+
 import org.testng.Assert;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 public class LoginTest extends AbstractTestBase {
 
-
-
-    @Test(dataProvider = "credentialsFromExcel", priority = 1)
+    @Test(dataProvider = "credentials", dataProviderClass = ReadDataFromExcel.class)
     public void loginTestWithExcel(String usernameValue, String passwordValue) {
 
         test = reports.createTest("Verify page logo as" + usernameValue);
@@ -22,16 +19,5 @@ public class LoginTest extends AbstractTestBase {
         test.pass("Page logo CRM was verified");
         test = reports.createTest("Login test for username " + usernameValue);
     }
-
-    @DataProvider
-    public Object[][] credentialsFromExcel() {
-
-        String path = "BitrixCredentials.xlsx";
-        String spreadSheet = "Credentials";
-
-        ExcelUtil excelUtil = new ExcelUtil(path, spreadSheet);
-        return excelUtil.getDataArray();
-    }
-
 
 }
