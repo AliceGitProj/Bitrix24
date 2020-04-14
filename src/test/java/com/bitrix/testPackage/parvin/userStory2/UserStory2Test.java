@@ -1,12 +1,11 @@
 package com.bitrix.testPackage.parvin.userStory2;
 
 import com.bitrix.testPackage.AbstractTestBase;
+import com.bitrix.testPackage.ReadDataFromExcel;
 import com.bitrix.utilities.BrowserUtilities;
-import com.bitrix.utilities.ExcelUtil;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 
@@ -25,10 +24,10 @@ public class UserStory2Test extends AbstractTestBase {
      * User should be able to click on "High Priority" checkbox
      * to set the current task to a top priority task.
      */
-    @Test(dataProvider = "credentialsFromExcel")
+    @Test(dataProvider = "credentials", dataProviderClass = ReadDataFromExcel.class)
     public void verifyHighPriorityCheckboxClicked(String usernameValue, String passwordValue) {
 
-        test = reports.createTest("Verify AC1 as userName " + usernameValue);
+        test = reports.createTest("Verify AC as userName " + usernameValue);
         loginPage.login(usernameValue, passwordValue);
 
         test.info("Login as " + usernameValue);
@@ -240,16 +239,6 @@ public class UserStory2Test extends AbstractTestBase {
         Assert.assertTrue(userStory2Page.moreTaskDetails.isEnabled());
         test.pass("More Task Details is clicked");
 
-    }
-
-    @DataProvider
-    public Object[][] credentialsFromExcel() {
-
-        String path = "BitrixCredentials.xlsx";
-        String spreadSheet = "Credentials";
-
-        ExcelUtil excelUtil = new ExcelUtil(path, spreadSheet);
-        return excelUtil.getDataArray();
     }
 
 
