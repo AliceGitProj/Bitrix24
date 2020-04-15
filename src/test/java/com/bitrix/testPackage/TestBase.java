@@ -17,7 +17,7 @@ import org.testng.annotations.*;
 
 import java.io.IOException;
 
-public class AbstractTestBase {
+public class TestBase {
 
     protected WebDriverWait wait;
     protected Actions actions;

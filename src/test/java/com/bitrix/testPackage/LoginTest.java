@@ -4,9 +4,9 @@ package com.bitrix.testPackage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class LoginTest extends AbstractTestBase {
+public class LoginTest extends TestBase {
 
-    @Test(dataProvider = "credentials", dataProviderClass = ReadDataFromExcel.class)
+    @Test(dataProvider = "credentials", dataProviderClass = ExcelUtils.class)
     public void loginTestWithExcel(String usernameValue, String passwordValue) {
 
         test = reports.createTest("Verify page logo as" + usernameValue);
