@@ -2,7 +2,7 @@ package com.bitrix.testPackage;
 
 import org.testng.annotations.Test;
 
-public class TestCase4 extends TestBase {
+public class TestCase4 {// extends TestBase {
 
     @Test
     public void testCase4() {
