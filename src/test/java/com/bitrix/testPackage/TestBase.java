@@ -19,9 +19,9 @@ import java.io.IOException;
 
 public class TestBase {
 
-    protected WebDriverWait wait;
-    protected Actions actions;
-    protected WebDriver driver;
+    protected static WebDriverWait wait;
+    protected static Actions actions;
+    protected static WebDriver driver;
     protected JavascriptExecutor js;
 
     protected ExtentReports reports;
@@ -88,5 +88,17 @@ public class TestBase {
         }
 
         Driver.closeDriver();
+    }
+
+    public static WebDriverWait getWait() {
+        return wait;
+    }
+
+    public static Actions getActions() {
+        return actions;
+    }
+
+    public static WebDriver getDriver() {
+        return driver;
     }
 }

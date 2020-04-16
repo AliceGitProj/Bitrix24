@@ -2,6 +2,7 @@ package com.bitrix.testPackage.parvin.userStory2;
 
 import com.bitrix.testPackage.TestBase;
 import com.bitrix.utilities.BrowserUtilities;
+import com.bitrix.utilities.ReadDataFromExcel;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
@@ -23,7 +24,7 @@ public class UserStory2Test extends TestBase {
      * User should be able to click on "High Priority" checkbox
      * to set the current task to a top priority task.
      */
-    @Test(dataProvider = "credentials", dataProviderClass = ExcelUtils.class)
+    @Test(dataProvider = "credentials", dataProviderClass = ReadDataFromExcel.class)
     public void verifyHighPriorityCheckboxClicked(String usernameValue, String passwordValue) {
 
         test = reports.createTest("Verify AC as userName " + usernameValue);

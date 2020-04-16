@@ -43,9 +43,6 @@ public class LoginPage extends PageBase {
         return taskTab.getText();
     }
 
-//    public LoginPage() {
-//        PageFactory.initElements(driver, this);
-//    }
 
     public void login() {
         String usernameValue = ConfigurationReader.getProperty("username");
