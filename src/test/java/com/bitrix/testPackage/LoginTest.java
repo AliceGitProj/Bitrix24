@@ -5,7 +5,7 @@ import com.bitrix.utilities.ReadDataFromExcel;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class LoginTest extends TestBase {
+public class LoginTest extends AbstractTestBase {
 
 
     //@Test(dataProvider = "credentials", dataProviderClass = ExcelUtils.class)

@@ -1,7 +1,6 @@
 package com.bitrix.pages;
 
-import com.bitrix.testPackage.TestBase;
-import org.openqa.selenium.Alert;
+import com.bitrix.testPackage.AbstractTestBase;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -15,9 +14,9 @@ import java.util.*;
 
 public class PollPage extends PageBase {
 
-    WebDriverWait wait = TestBase.getWait();
-    WebDriver driver = TestBase.getDriver();
-    Actions actions = TestBase.getActions();
+    WebDriverWait wait = AbstractTestBase.getWait();
+    WebDriver driver = AbstractTestBase.getDriver();
+    Actions actions = AbstractTestBase.getActions();
 
 
     @FindBy(id = "feed-add-post-form-tab-vote")

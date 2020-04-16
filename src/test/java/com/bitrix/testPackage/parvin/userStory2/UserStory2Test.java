@@ -1,6 +1,6 @@
 package com.bitrix.testPackage.parvin.userStory2;
 
-import com.bitrix.testPackage.TestBase;
+import com.bitrix.testPackage.AbstractTestBase;
 import com.bitrix.utilities.BrowserUtilities;
 import com.bitrix.utilities.ReadDataFromExcel;
 import org.openqa.selenium.By;
@@ -9,7 +9,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 
-public class UserStory2Test extends TestBase {
+public class UserStory2Test extends AbstractTestBase {
 
     /**
      * User Story:

@@ -5,7 +5,7 @@ import com.bitrix.pages.PollPage;
 import com.bitrix.utilities.BrowserUtilities;
 import org.testng.annotations.Test;
 
-public class TestCase4 extends TestBase {
+public class TestCase4 extends AbstractTestBase {
 
     LoginPage loginPage;
     PollPage pollPage;

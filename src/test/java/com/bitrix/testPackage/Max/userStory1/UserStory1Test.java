@@ -1,6 +1,6 @@
 package com.bitrix.testPackage.Max.userStory1;
 
-import com.bitrix.testPackage.TestBase;
+import com.bitrix.testPackage.AbstractTestBase;
 import com.bitrix.utilities.BrowserUtilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 
 
 
-public class UserStory1Test extends TestBase {
+public class UserStory1Test extends AbstractTestBase {
  UserStory1Page userStory1Page=new UserStory1Page();;
 
 
