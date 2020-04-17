@@ -8,7 +8,6 @@ import org.testng.annotations.Test;
 
 //import javax.annotation.Priority;
 
-
 public class UserStory1Test extends AbstractTestBase {
  UserStory1Page userStory1Page=new UserStory1Page();;
 
