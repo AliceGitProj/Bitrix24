@@ -1,6 +1,5 @@
-package com.bitrix.testPackage;
+package com.bitrix.utilities;
 
-import com.bitrix.utilities.ExcelUtil;
 import org.apache.poi.ss.usermodel.*;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -10,7 +9,6 @@ import java.util.Arrays;
 import java.util.Map;
 
 public class ReadDataFromExcel {
-
 
     @Test
     public void readExcelFileTest() throws Exception {
@@ -100,6 +98,4 @@ public class ReadDataFromExcel {
         ExcelUtil excelUtil = new ExcelUtil(path, spreadSheet);
         return excelUtil.getDataArray();
     }
-
-
 }

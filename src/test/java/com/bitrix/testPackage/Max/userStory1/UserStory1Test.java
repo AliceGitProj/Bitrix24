@@ -1,12 +1,7 @@
 package com.bitrix.testPackage.Max.userStory1;
 
 import com.bitrix.testPackage.AbstractTestBase;
-import com.bitrix.testPackage.ReadDataFromExcel;
 import com.bitrix.utilities.BrowserUtilities;
-import com.bitrix.utilities.ConfigurationReader;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
