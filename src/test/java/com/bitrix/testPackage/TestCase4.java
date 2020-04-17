@@ -37,7 +37,3 @@ public class TestCase4 extends AbstractTestBase {
 
 
 }
-
-/*
-        10. User should be able to Add questions and multiple answers; user can provide multiple choice
-        to attendees by selecting the Allow multiple choice checkbox."*/
