@@ -1,8 +1,8 @@
 package com.bitrix.testPackage.parvin.userStory2;
 
 import com.bitrix.testPackage.AbstractTestBase;
-import com.bitrix.testPackage.ReadDataFromExcel;
 import com.bitrix.utilities.BrowserUtilities;
+import com.bitrix.utilities.ReadDataFromExcel;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
