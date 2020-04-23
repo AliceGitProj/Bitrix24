@@ -76,12 +76,11 @@ public class UserStory6Page extends PageBase {
     public void uploadFilesAndImages() {
 
         uploadFiles.click();
-        String fileName="dog.png";
-        String pathForFile="C:\\Users\\Nikolai\\Desktop\\Bitrix24\\"+fileName;
-        uploadFilesImages.sendKeys(pathForFile);
-
+        uploadFilesImages.sendKeys(System.getProperty("user.dir") + "/dog.png");
         String actual = uploadedImage.getText();
         System.out.println("Image is uploaded!");
+        Assert.assertEquals(actual,"dog.png");
+
     }
 
     public void downLoadExternalDrive(){
