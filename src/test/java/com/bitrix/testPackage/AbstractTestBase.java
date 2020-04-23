@@ -16,6 +16,7 @@ import org.testng.ITestResult;
 import org.testng.annotations.*;
 
 import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 
 public class AbstractTestBase {
 
@@ -62,6 +63,7 @@ public class AbstractTestBase {
         String URL = ConfigurationReader.getProperty("bitrix");
         driver.get(URL);
         driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         wait = new WebDriverWait(Driver.getDriver(), 25);
         actions = new Actions(Driver.getDriver());
         js = (JavascriptExecutor) driver;
