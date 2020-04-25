@@ -2,9 +2,13 @@ package com.bitrix.testPackage.Max.userStory1;
 
 import com.bitrix.testPackage.AbstractTestBase;
 import com.bitrix.utilities.BrowserUtilities;
+import com.bitrix.utilities.ConfigurationReader;
+import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+
+import java.util.Random;
 
 //import javax.annotation.Priority;
 
@@ -32,12 +36,15 @@ public class UserStory1Test extends AbstractTestBase {
         userStory1Page.message.click();
         wait.until(ExpectedConditions.elementToBeClickable(userStory1Page.uploadEnvelop)).click();
         BrowserUtilities.wait(1);
-        Assert.assertTrue(userStory1Page.uploadFileAndImages.isEnabled());
-        Assert.assertTrue(userStory1Page.downloadFromExternalDrive.isEnabled());
-        userStory1Page.uploadFileAndImages.click();
+        String pathForUploadingFile = System.getProperty("user.dir")+"/VytrackTestUsers.xlsx";
         BrowserUtilities.wait(3);
-        test.pass("Page from local disks is visible");
+        userStory1Page.uploadFileAndImages.sendKeys(pathForUploadingFile);
+        BrowserUtilities.wait(3);
+        test.pass("Page from local desks is visible");
     }
+
+
+
 
     @Test(description = "3. User should be able to attach link by clicking on the link icon.")
     public void userShouldBeAbleToAttachLink(){
@@ -78,5 +85,39 @@ public class UserStory1Test extends AbstractTestBase {
         BrowserUtilities.wait(1);
 
         test.pass("the videos was attached");
+    }
+    @Test(description = "6. User should be able to add mention by clicking on the Add mention icon and select contacts from the lists provided in dropdown.\n")
+    public void userShouldBeAbleToAddMention(){
+        test=reports.createTest("User should be able to add mention");
+        loginPage.login();
+        BrowserUtilities.wait(2);
+        userStory1Page.message.click();
+        BrowserUtilities.wait(1);
+
+        userStory1Page.addMention.click();
+        BrowserUtilities.wait(1);
+        userStory1Page.emploeesAndDepartments.click();
+        BrowserUtilities.wait(1);
+        Random random=new Random();
+        int num= random.nextInt(userStory1Page.employeeInfo.size());
+        if(num==0){
+            num=1;
+        }
+        BrowserUtilities.wait(1);
+        String expected = userStory1Page.employeeInfo.get(num).getText();
+        if(!expected.contains("@")){
+            num=3;
+        }
+        expected = userStory1Page.employeeInfo.get(num).getText();
+        userStory1Page.employeeInfo.get(num).click();
+        BrowserUtilities.wait(1);
+        driver.switchTo().frame(userStory1Page.iframe);
+        String actual = userStory1Page.choosingMention.getText();
+        System.out.println(actual);
+        System.out.println(expected);
+        Assert.assertEquals(expected,actual);
+
+
+        test.pass("the mention was added");
     }
 }

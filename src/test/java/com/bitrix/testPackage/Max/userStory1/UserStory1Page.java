@@ -9,6 +9,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.List;
+
 public class UserStory1Page {
 
     protected WebDriver driver = Driver.getDriver();
@@ -21,7 +23,7 @@ public class UserStory1Page {
     @FindBy(css = "[id='bx-b-uploadfile-blogPostForm']")
     protected WebElement uploadEnvelop;
 
-    @FindBy(xpath = "(//table//tbody//tr//td[@class='diskuf-selector wd-fa-add-file-light-cell wd-fa-add-file-from-main'])[1]")
+    @FindBy(name = "bxu_files[]")
     protected WebElement uploadFileAndImages;
 
     @FindBy(xpath = "(//span[text()='Download from external drive'])[1]")
@@ -60,8 +62,17 @@ public class UserStory1Page {
     @FindBy(xpath = "//div//input[@type='button' and @value='Save']")
     protected WebElement saveVideoButton;
 
+    //===========   Story - 6  ===================
 
+    @FindBy(id = "bx-b-mention-blogPostForm")
+    public WebElement addMention;
+    @FindBy(css = "[id^='destDepartmentTab_mention']")
+    public WebElement emploeesAndDepartments;
+    @FindBy(xpath = "//div[@class='bx-finder-company-department-employee-info']//div")
+    public List<WebElement> employeeInfo;
 
+    @FindBy(xpath = "//span[@class='bxhtmled-metion' and contains( text(),'@')]")
+    public WebElement choosingMention;
 
     public UserStory1Page() {
         PageFactory.initElements(driver, this);
